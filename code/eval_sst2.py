@@ -38,4 +38,26 @@ def k_shot_prompting(query_text, train_data, k, label_map={0: "Negative", 1: "Po
     full_prompt = "\n\n".join(prompt_parts)
 
     return full_prompt
+def parse_sentiment(raw_output_text, prompt_prefix="Sentiment:"):
+    if prompt_prefix in raw_output_text:
+        completion = raw_output_text.split(prompt_prefix)[-1]
+    else: 
+        completion = raw_output_text
+
+    first_line = completion.split('\n')[0].strip().lower()
+
+    if first_line.startswith("positive"):
+        return 1
+    if first_line.startswith("negative"):
+        return 0
+
+    if "positive" in first_line:
+        return 1
+    if "negative" in first_line:
+        return 0
+
+    return -1       
+        
+
+    
     
