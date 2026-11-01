@@ -32,3 +32,6 @@ def k_shot_prompting(k):
         prompt_parts.append(exemplar_block)
 
     
+    query_block = f"Review: {review_text\nSentiment}"
+    prompt_parts.append(query_block)
+    
