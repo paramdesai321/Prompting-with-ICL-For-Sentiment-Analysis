@@ -21,4 +21,14 @@ def k_shot_prompting(k):
     else:
         exemplars = []
     
+    for item in exemplars:
+    
+        review_text = item['sentance']
+        label_num = item['label']
+        
+        label_str = item[label_num]
+        
+        exemplar_block = f"Review: {review_text}\nSentiment: {label_str}"
+        prompt_parts.append(exemplar_block)
+
     
