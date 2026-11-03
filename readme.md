@@ -133,7 +133,7 @@ python3 eval_robustness.py
 ##  Author & Course Information
 
 * **Author:** Param Desai
-* * **Instructor:** Prof. Lifu Huang
+* **Instructor:** Prof. Lifu Huang
 * **Course:** ECS 189G: Large Foundation Model
 * **Model:** Qwen3-0.6B-Base
 * **Dataset:** Stanford Sentiment Treebank (SST-2)
