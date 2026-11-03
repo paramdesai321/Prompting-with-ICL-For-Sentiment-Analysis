@@ -68,7 +68,34 @@ def parse_sentiment(raw_output_text, prompt_prefix="Sentiment:"):
         return 0
 
     return -1       
+      
+
+def kshot_robustness_prompt(query_text, train_data, k=5, format_type="baseline"):
+    exemplars = random.sample(train_data, k) if k > 0 else []
+    parts = []
+
+    if format_type == "label_shift_words":
+        label_map = {0: "Bad", 1: "Good"}
+    elif format_type == "label_shift_nums":
+        label_map = {0: "0", 1: "1"}
+    else:
+        label_map = {0: "Negative", 1: "Positive"}
+
+    for item in exemplars:
+        text = item['sentence']
+        lbl = label_map[item['label']]
         
+        if format_type == "format_shift":
+            parts.append(f"Input: {text} | Label: {lbl}")
+        else:
+            parts.append(f"Review: {text}\nSentiment: {lbl}")
+
+    if format_type == "format_shift":
+        parts.append(f"Input: {query_text} | Label:")
+    else:
+        parts.append(f"Review: {query_text}\nSentiment:")
+
+    return "\n\n".join(parts) 
 
 k_values = [0, 1, 3, 5, 8, 16]
 accuracy_results = {}
