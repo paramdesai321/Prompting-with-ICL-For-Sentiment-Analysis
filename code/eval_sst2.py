@@ -96,6 +96,19 @@ def kshot_robustness_prompt(query_text, train_data, k=5, format_type="baseline")
         parts.append(f"Review: {query_text}\nSentiment:")
 
     return "\n\n".join(parts) 
+def parse_robust_label(raw_text, format_type):
+    first_line = raw_text.split('\n')[0].lower()
+    
+    if format_type == "label_shift_words":
+        if "good" in first_line: return 1
+        if "bad" in first_line: return 0
+    elif format_type == "label_shift_nums":
+        if "1" in first_line: return 1
+        if "0" in first_line: return 0
+    else:
+        if "positive" in first_line: return 1
+        if "negative" in first_line: return 0
+
 
 k_values = [0, 1, 3, 5, 8, 16]
 accuracy_results = {}
