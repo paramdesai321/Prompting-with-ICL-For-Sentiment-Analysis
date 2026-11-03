@@ -2,7 +2,7 @@
 
 This repository implements a systematic evaluation pipeline to investigate **In-Context Learning (ICL)** and prompt sensitivity using the base language model **Qwen3-0.6B-Base** on the Stanford Sentiment Treebank (**SST-2**) dataset.
 
-Developed for **ECS 189G: Large Foundation Model**.
+Developed for **ECS 189G: Large Foundation Models**.
 
 ---
 
@@ -134,6 +134,6 @@ python3 eval_robustness.py
 
 * **Author:** Param Desai
 * **Instructor:** Prof. Lifu Huang
-* **Course:** ECS 189G: Large Foundation Model
+* **Course:** ECS 189G: Large Foundation Models
 * **Model:** Qwen3-0.6B-Base
 * **Dataset:** Stanford Sentiment Treebank (SST-2)
