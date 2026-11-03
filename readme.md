@@ -2,11 +2,11 @@
 
 This repository implements a systematic evaluation pipeline to investigate **In-Context Learning (ICL)** and prompt sensitivity using the base language model **Qwen3-0.6B-Base** on the Stanford Sentiment Treebank (**SST-2**) dataset.
 
-Developed for **ECS 189G: Prompting with In-Context Learning and Evaluation**.
+Developed for **ECS 189G: Large Foundation Model**.
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 Base language models (such as `Qwen3-0.6B-Base`) are trained purely for causal next-token prediction without instruction fine-tuning. Consequently, evaluating them on downstream tasks like binary sentiment classification ($0 = \text{Negative}$, $1 = \text{Positive}$) presents two main challenges:
 1. **Dynamic In-Context Exemplar Construction:** Constructing balanced $K$-shot prompt templates dynamically from training data.
@@ -16,7 +16,7 @@ This project implements solutions for both challenges, runs an ICL scaling curve
 
 ---
 
-## 🛠️ Key Pipeline Components
+##  Key Pipeline Components
 
 ### 1. Dynamic $K$-Shot Prompting (`k_shot_prompting`)
 * Dynamically samples $K$ random exemplars from `train.json`.
@@ -30,7 +30,7 @@ This project implements solutions for both challenges, runs an ICL scaling curve
 
 ---
 
-## 📊 Empirical Results & Analysis
+##  Empirical Results & Analysis
 
 ### 1. ICL Scaling Performance ($K$-Shot Curve)
 
@@ -44,6 +44,8 @@ Evaluated across the 872 SST-2 validation samples:
 | **$K=5$** | 86.24% | +2.07% |
 | **$K=8$** | **89.33%** | **+3.09% (Peak)** |
 | **$K=16$** | 88.65% | -0.68% (Saturation) |
+
+![K-Shot Prompting Plot](code/kshot_accuracy_curve.png)
 
 #### Key Takeaways:
 * **Format Priming ($K=0 \rightarrow K=1$):** The steepest accuracy jump occurs when introducing a single exemplar (+5.85%), confirming that prompt formatting rapidly constrains the base model's next-token vocabulary.
@@ -68,7 +70,7 @@ Tested across layout shifts and target label mapping modifications:
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```text
 .
@@ -87,7 +89,7 @@ Tested across layout shifts and target label mapping modifications:
 
 ---
 
-## 🚀 Setup & Execution
+##  Setup & Execution
 
 ### 1. Environment Setup
 
@@ -128,9 +130,9 @@ python3 eval_robustness.py
 
 ---
 
-## 👤 Author & Course Information
+##  Author & Course Information
 
 * **Author:** Param Desai
-* **Course:** ECS 189G: Prompting with In-Context Learning and Evaluation (Fall 2026)
+* **Course:** ECS 189G: Large Foundation Model
 * **Model:** Qwen3-0.6B-Base
 * **Dataset:** Stanford Sentiment Treebank (SST-2)
